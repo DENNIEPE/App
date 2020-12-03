@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+
+<!-- <script type="text/javascript" src="/node_modules/axios/dist/axios.min.js"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="/node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<!-- <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.js"></script> -->
+
+<body>
+    <div class="container">
+        <H1>HELLO WORLD!</H1>
+    </div>
+
+    <div id="chatBox" class="container">
+        <div class="messages row" v-for="message in messages">
+            <div class="col-6">
+                <div>{{message.username}} : {{message.message}} </div>
+                <i>{{message.dtime}}</i>
+                <hr>
+            </div>
+            <div class="col-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <input type="text" placeholder="Username" v-model="username"> <br>
+                <textarea placeholder="Message" cols="23" rows="2" v-model="dmessage"></textarea>
+                <button class="button btn-success" v-on:click="sendmsg()">SEND</button>
+            </div>
+            <div class="col-6">
+                <h1>COLUMN 6</h1>
+            </div>
+        </div>
+    </div>
+    <div id="cryptpass" class="container">
+        <h1>USING BCRYPT</h1>
+        <input type="text" v-model="password">
+        <button class="button btn-success" v-on:click="hashp()">HASH PASSWORD</button>
+        <p>HASH PASSWORD: {{hashpass}}</p>
+
+        <h5>Compare Hash Password</h5>
+        <input type="text" v-model="comparepass">
+        <button class="btn-success button" v-on:click="compare()">Compare with Hash</button>
+        <p>MATCH? {{bool}}</p>
+    </div>
+</body>
+
+<script src="./../vue/vIndex.js"></script>
+
+</html>
